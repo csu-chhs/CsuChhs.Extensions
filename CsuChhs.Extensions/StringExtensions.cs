@@ -265,13 +265,55 @@ namespace CsuChhs.Extensions
         /// Provides some decoding for ASCII characters that are embedded in a 
         /// string.  Currently this includes changing &#39; to apostrophes.
         ///
-        /// Introduced in CHHS.Common.Core 1.1.2
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public static string DecodeAscii(this string value)
         {
             return value.Replace("&#39;", "'");
+        }
+
+        /// <summary>
+        /// Changes the ending of a word to be plural if the count is not 1,
+        /// otherwise leaves it the same.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="count">The number of items. Determines if it is plural or singular.</param>
+        /// <param name="customEnding">Optional custom ending for exceptions to the normal rule.</param>
+        /// <returns>A string that has been adjusted to be singular or plural depending on the count.</returns>
+        public static string Pluralize(this string value, int count, string? customEnding = null)
+        {
+            if (count == 1)
+            {
+                return value;
+            }
+
+            if (customEnding != null)
+            {
+                return $"{value}{customEnding}";
+            }
+
+            string valueLowerCase = value.ToLower();
+            if (
+                valueLowerCase.EndsWith("x") || 
+                valueLowerCase.EndsWith("s") || 
+                valueLowerCase.EndsWith("z") ||
+                valueLowerCase.EndsWith("sh") ||
+                valueLowerCase.EndsWith("ch")
+            )
+            {
+                // box => boxes, atlas => atlases, match => matches
+                return $"{value}es";
+            }
+
+            if (valueLowerCase.EndsWith("y"))
+            {
+                // tally => tallies
+                return $"{value.Substring(0, value.Length - 1)}ies";
+            }
+
+            // paper => papers
+            return $"{value}s";
         }
     }
 }
