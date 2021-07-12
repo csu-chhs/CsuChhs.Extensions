@@ -88,7 +88,59 @@ namespace CsuChhs.Extensions.Tests
             Assert.Equal("+1 (123) 456-7890", "1(123)456-7890".ToPhoneNumber());
         }
 
-        
+        [Fact]
+        public void TestPluralOne()
+        {
+            Assert.Equal("computer", "computer".Pluralize(1));
+        }
 
+        [Fact]
+        public void TestPluralX()
+        {
+            Assert.Equal("boxes", "box".Pluralize(2));
+        }
+
+        [Fact]
+        public void TestPluralXCustom()
+        {
+            Assert.Equal("oxen", "ox".Pluralize(5, "en"));
+            Assert.Equal("ox", "ox".Pluralize(1, "en"));
+        }
+
+        [Fact]
+        public void TestPluralS()
+        {
+            Assert.Equal("atlases", "atlas".Pluralize(0));
+        }
+
+        [Fact]
+        public void TestPluralZ()
+        {
+            Assert.Equal("buzzes", "buzz".Pluralize(3));
+        }
+
+        [Fact]
+        public void TestPluralSh()
+        {
+            Assert.Equal("rushes", "rush".Pluralize(6));
+        }
+
+        [Fact]
+        public void TestPluralCh()
+        {
+            Assert.Equal("reaches", "reach".Pluralize(7));
+        }
+
+        [Fact]
+        public void TestPluralY()
+        {
+            Assert.Equal("cities", "city".Pluralize(2));
+        }
+
+        [Fact]
+        public void TestPluralNormal()
+        {
+            Assert.Equal("papers", "paper".Pluralize(3));
+        }
     }
 }
