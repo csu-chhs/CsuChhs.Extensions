@@ -52,5 +52,104 @@ namespace CsuChhs.Extensions.Tests
 
             Assert.Throws<ArgumentOutOfRangeException>(() => NumberExtensions.TruncateDecimals(d, -3));
         }
+
+        [Fact]
+        public void TestToPercent()
+        {
+            double number, total;
+
+            {
+                number = 10;
+                total = 50;
+                Assert.Equal(20.0, number.ToPercent(total));
+            }
+
+            {
+                number = 25;
+                total = 40;
+                Assert.Equal(62.5, number.ToPercent(total, 1));
+                Assert.Equal(63.0, number.ToPercent(total, 0));
+            }
+
+            {
+                number = 30.0;
+                total = 46.0;
+                Assert.Equal(65.217, number.ToPercent(total, 3));
+                Assert.Equal(65.0, number.ToPercent(total, 0));
+            }
+
+            {
+                number = 25;
+                total = 50;
+                Assert.Equal(50.0, number.ToPercent(total));
+            }
+
+            {
+                number = 79.0;
+                total = 139.0;
+                Assert.Equal(56.83453, number.ToPercent(total, 5));
+                Assert.Equal(56.835, number.ToPercent(total, 3));
+            }
+
+            {
+                number = 185.0;
+                total = 36.0;
+                Assert.Equal(513.889, number.ToPercent(total, 3));
+                Assert.Equal(514.0, number.ToPercent(total, 0));
+            }
+        }
+
+        [Fact]
+        public void TestToIntPercent()
+        {
+            double number, total;
+
+            {
+                number = 40.0;
+                total = 80.0;
+                Assert.Equal(50, number.ToIntPercent(total));
+            }
+
+            {
+                number = 40;
+                total = 80;
+                Assert.Equal(50, number.ToIntPercent(total));
+            }
+
+            {
+                number = 41;
+                total = 50;
+                Assert.Equal(82, number.ToIntPercent(total));
+            }
+
+            {
+                number = 79;
+                total = 139;
+                Assert.Equal(57, number.ToIntPercent(total));
+            }
+
+            {
+                number = 185;
+                total = 36;
+                Assert.Equal(514, number.ToIntPercent(total));
+            }
+        }
+
+        [Fact]
+        public void TestPercentDivideByZeroException()
+        {
+            double number = 5, total = 0;
+            Assert.Throws<DivideByZeroException>(() => number.ToPercent(total));
+            Assert.Throws<DivideByZeroException>(() => number.ToIntPercent(total));
+        }
+
+        [Fact]
+        public void TestToPercentAsString()
+        {
+            double number = 30.0, total = 46.0;
+
+            Assert.Equal("65.217", number.ToPercent(total, 3).ToString());
+            Assert.Equal("65", number.ToIntPercent(total).ToString());
+        }
     }
 }
