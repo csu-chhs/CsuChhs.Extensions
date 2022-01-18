@@ -151,5 +151,27 @@ namespace CsuChhs.Extensions.Tests
             Assert.Equal("65.217", number.ToPercent(total, 3).ToString());
             Assert.Equal("65", number.ToIntPercent(total).ToString());
         }
+
+        [Fact]
+        public void TestToPercentOrZero()
+        {
+            double number, total;
+            {
+                number = 31;
+                total = 57;
+                Assert.Equal(54.0, number.ToPercentOrZero(total));
+                Assert.Equal(54, number.ToIntPercentOrZero(total));
+                Assert.Equal(54.4, number.ToPercentOrZero(total, 1));
+                Assert.Equal(54.39, number.ToPercentOrZero(total, 2));
+                Assert.Equal(54.386, number.ToPercentOrZero(total, 3));
+            }
+
+            {
+                number = 500;
+                total = 0;
+                Assert.Equal(0.0, number.ToPercentOrZero(total));
+                Assert.Equal(0, number.ToIntPercentOrZero(total));
+            }
+        }
     }
 }
