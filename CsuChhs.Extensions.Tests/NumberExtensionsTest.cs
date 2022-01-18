@@ -151,5 +151,7 @@ namespace CsuChhs.Extensions.Tests
             Assert.Equal("65.217", number.ToPercent(total, 3).ToString());
             Assert.Equal("65", number.ToIntPercent(total).ToString());
         }
+
+        
     }
 }

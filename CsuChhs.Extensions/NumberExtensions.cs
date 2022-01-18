@@ -54,7 +54,8 @@ namespace CsuChhs.Extensions
         }
 
         /// <summary>
-        /// Provides the percent that one number represents of another.
+        /// Provides the percent that one number represents of a total.
+        /// If the total is 0, throws a <see cref="DivideByZeroException"/>.
         /// </summary>
         /// <param name="num">The number you have</param>
         /// <param name="total">The total number from which you want to derive your number's percentage</param>
@@ -73,6 +74,7 @@ namespace CsuChhs.Extensions
         /// <summary>
         /// Quick way to get a simple integer number representing your number's percentage of another number.
         /// Rounds up or down to nearest whole number.
+        /// If the total is 0, throws a <see cref="DivideByZeroException"/>.
         /// </summary>
         /// <param name="num">The number you have</param>
         /// <param name="total">The total number from which you want to derive your number's percentage</param>
@@ -87,6 +89,40 @@ namespace CsuChhs.Extensions
             {
                 throw ex;
             }
+        }
+
+        /// <summary>
+        /// Provides the percent that one number represents of a total.
+        /// If the total is 0, it just returns 0. Does not throw an exception.
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="total"></param>
+        /// <param name="decimalPlaces"></param>
+        /// <returns></returns>
+        public static double ToPercentOrZero(this double num, double total, int decimalPlaces = 0)
+        {
+            if (total == 0.0)
+            {
+                return 0.0;
+            }
+            return num.ToPercent(total, decimalPlaces);
+        }
+
+        /// <summary>
+        /// Quick way to get a simple integer number representing your number's percentage of another number.
+        /// Rounds up or down to nearest whole number.
+        /// If the total is 0, it just returns 0. Does not throw an exception.
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="total"></param>
+        /// <returns></returns>
+        public static int ToIntPercentOrZero(this double num, double total)
+        {
+            if (total == 0.0)
+            {
+                return 0;
+            }
+            return num.ToIntPercent(total);
         }
     }
 }
