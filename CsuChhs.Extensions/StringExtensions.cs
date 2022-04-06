@@ -9,11 +9,64 @@ namespace CsuChhs.Extensions
     /// </summary>
     public static class StringExtensions
     {
+        public static string ToTwelveHourTime(this string value)
+        {
+            if (value.Substring(0, 1) == "0")
+            {
+                return $"{value.Substring(1, 1)}:{value.Substring(2)} AM";
+            }
+            List<string> unchangedNumbers = new List<string>
+            {
+                "10",
+                "11",
+                "12"
+            };
+
+            if (unchangedNumbers.Contains(value.Substring(0, 2)))
+            {
+                var amPm = "AM";
+                if (value.Substring(0, 2) == "12")
+                {
+                    amPm = "PM";
+                }
+                return $"{value.Substring(0, 2)}:{value.Substring(2)} {amPm}";
+            }
+
+            // Number is an afternoon number.
+            Dictionary<string, string> timeConversion = new Dictionary<string, string>
+            {
+                { "13", "1" },
+                {"14", "2"},
+                {"15", "3"},
+                {"16", "4"},
+                {"17", "5"},
+                {"18", "6"},
+                {"19", "7"},
+                {"20", "8"},
+                {"21", "9"},
+                {"22", "10"},
+                {"23", "11"},
+                {"24", "12"}
+
+            };
+
+            var newTime = timeConversion.Single(s => s.Key == value.Substring(0, 2));
+            string amPm2 = "PM";
+            
+            if (newTime.Value == "12")
+            {
+                amPm2 = "AM";
+            }
+
+            return $"{newTime.Value}:{value.Substring(2)} {amPm2}";
+
+            
+        }
+        
         /// <summary>
         /// Converts a possible URL without scheme into
         /// one with an acceptable scheme.
         ///
-        /// Introduced with CHHS.Common.Core.1.1.1
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>

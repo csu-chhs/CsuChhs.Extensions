@@ -5,6 +5,27 @@ namespace CsuChhs.Extensions.Tests
     public class StringExtensionTest
     {
         [Fact]
+        public void TestTwelveHourTime()
+        {
+            string time = "0800";
+            Assert.Equal("8:00 AM", time.ToTwelveHourTime());
+
+            string time2 = "1000";
+            Assert.Equal("10:00 AM", time2.ToTwelveHourTime());
+
+            string time3 = "1230";
+            Assert.Equal("12:30 PM", time3.ToTwelveHourTime());
+
+            string time4 = "1345";
+            Assert.Equal("1:45 PM", time4.ToTwelveHourTime());
+
+            string time5 = "2400";
+            Assert.Equal("12:00 AM", time5.ToTwelveHourTime());
+        }
+
+
+
+        [Fact]
         public void TestToUrlExtension()
         {
             string url = "sanoteacher.weebly.com";
