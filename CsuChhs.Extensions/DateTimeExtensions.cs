@@ -105,6 +105,7 @@ namespace CsuChhs.Extensions
 
         }
 
+        [Obsolete("Please use Humanizer Library instead.", true)]
         public static string ToPrettyTime(this DateTime dateTime)
         {
             // 1.
