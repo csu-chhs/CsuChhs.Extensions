@@ -25,13 +25,13 @@ namespace CsuChhs.Extensions
         /// <param name="enumValue"></param>
         /// <returns></returns>
         [Obsolete("Use Humanizer Library instead", true)]
-        public static string GetDisplayName(this Enum enumValue)
+        public static string? GetDisplayName(this Enum enumValue)
         {
-            return enumValue.GetType()
-                .GetMember(enumValue.ToString())
-                .First()
-                .GetCustomAttribute<DisplayAttribute>()
-                .GetName();
+            return enumValue?.GetType()
+                ?.GetMember(enumValue.ToString())
+                ?.First()
+                ?.GetCustomAttribute<DisplayAttribute>()
+                ?.GetName();
         }
 
         /// <summary>
@@ -48,9 +48,13 @@ namespace CsuChhs.Extensions
         {
             try
             {
-                return (T) Enum.Parse(typeof(T), value);
+                if(value != null)
+                {
+                    return (T) Enum.Parse(typeof(T), value);
+                }
+                return null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
