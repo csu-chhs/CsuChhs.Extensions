@@ -31,7 +31,7 @@
             }
             else
             {
-                return value?.ToYesNo();
+                return value.ToYesNo();
             }
         }
     }
