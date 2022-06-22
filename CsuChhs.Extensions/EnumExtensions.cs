@@ -24,6 +24,7 @@ namespace CsuChhs.Extensions
         /// </summary>
         /// <param name="enumValue"></param>
         /// <returns></returns>
+        [Obsolete("Use Humanizer Library instead", true)]
         public static string GetDisplayName(this Enum enumValue)
         {
             return enumValue.GetType()
