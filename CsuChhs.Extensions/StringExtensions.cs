@@ -196,7 +196,7 @@ namespace CsuChhs.Extensions
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string ToCurrency(this decimal? value)
+        public static string? ToCurrency(this decimal? value)
         {
             return value?.ToString("C");
         }
@@ -218,7 +218,7 @@ namespace CsuChhs.Extensions
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string ToCurrency(this double? value)
+        public static string? ToCurrency(this double? value)
         {
             return value?.ToString("C");
         }
@@ -240,7 +240,7 @@ namespace CsuChhs.Extensions
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string ToCurrency(this int? value)
+        public static string? ToCurrency(this int? value)
         {
             return value?.ToString("C");
         }

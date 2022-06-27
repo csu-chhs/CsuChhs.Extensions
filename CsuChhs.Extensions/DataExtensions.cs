@@ -38,7 +38,7 @@ namespace CsuChhs.Extensions
                 int colIndex = reader.GetOrdinal(columnName);
                 return _SafeGetDouble(reader, colIndex);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -85,7 +85,7 @@ namespace CsuChhs.Extensions
                 int colIndex = reader.GetOrdinal(columnName);
                 return _SafeGetString(reader, colIndex);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -131,7 +131,7 @@ namespace CsuChhs.Extensions
                 int colIndex = reader.GetOrdinal(columnName);
                 return _SafeGetInt(reader, colIndex);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -177,7 +177,7 @@ namespace CsuChhs.Extensions
                 int colIndex = reader.GetOrdinal(columnName);
                 return _SafeGetDateTime(reader, colIndex);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -197,7 +197,7 @@ namespace CsuChhs.Extensions
                 {
                     return reader.GetDateTime(colIndex);
                 }
-                catch (FormatException ex)
+                catch (FormatException)
                 {
                     // Date time is not in a correct format that we can parse
                     // return a null value as we cannot parse.
@@ -235,7 +235,7 @@ namespace CsuChhs.Extensions
                 int colIndex = reader.GetOrdinal(columnName);
                 return _SafeGetBool(reader, colIndex);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
