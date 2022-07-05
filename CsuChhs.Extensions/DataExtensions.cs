@@ -92,6 +92,18 @@ namespace CsuChhs.Extensions
         }
 
         /// <summary>
+        /// Returns string value via a column name
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="columnName"></param>
+        /// <returns></returns>
+        public static string GetString(this IDataReader reader, string columnName)
+        {
+            int colIndex = reader.GetOrdinal(columnName);
+            return reader.GetString(colIndex);
+        }
+
+        /// <summary>
         /// Internal method for fetching string data.
         /// </summary>
         /// <param name="reader"></param>
