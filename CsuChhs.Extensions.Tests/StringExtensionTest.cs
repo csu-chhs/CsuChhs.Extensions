@@ -163,5 +163,7 @@ namespace CsuChhs.Extensions.Tests
         {
             Assert.Equal("papers", "paper".Pluralize(3));
         }
+
+        
     }
 }

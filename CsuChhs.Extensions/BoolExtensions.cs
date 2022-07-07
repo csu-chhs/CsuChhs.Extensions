@@ -31,7 +31,12 @@
             }
             else
             {
-                return value.ToYesNo();
+                if ((bool)value)
+                {
+                    return "Yes";
+                }
+
+                return "No";
             }
         }
     }
