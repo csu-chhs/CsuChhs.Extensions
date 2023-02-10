@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -13,5 +13,9 @@
     <PackageDescription>Extensions for .Net Projects</PackageDescription>
     <RepositoryUrl>https://github.com/csu-chhs/CsuChhs.Extensions</RepositoryUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+  <ItemGroup>
+      <None Include="../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>
