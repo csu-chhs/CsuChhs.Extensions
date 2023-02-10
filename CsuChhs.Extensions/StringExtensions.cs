@@ -271,7 +271,7 @@ namespace CsuChhs.Extensions
         {
             try
             {
-                _=Int32.Parse(value);
+                _=long.Parse(value);
             }
             catch (FormatException)
             {
