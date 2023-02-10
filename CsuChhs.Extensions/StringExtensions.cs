@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace CsuChhs.Extensions
@@ -9,6 +8,11 @@ namespace CsuChhs.Extensions
     /// </summary>
     public static class StringExtensions
     {
+        /// <summary>
+        /// Transforms a formatted string time (8:00 AM) to a 24 hour time equivalent.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string ToTwelveHourTime(this string value)
         {
             if (value.Substring(0, 1) == "0")
@@ -59,8 +63,6 @@ namespace CsuChhs.Extensions
             }
 
             return $"{newTime.Value}:{value.Substring(2)} {amPm2}";
-
-            
         }
         
         /// <summary>
@@ -271,7 +273,7 @@ namespace CsuChhs.Extensions
         {
             try
             {
-                _=Int32.Parse(value);
+                _=long.Parse(value);
             }
             catch (FormatException)
             {

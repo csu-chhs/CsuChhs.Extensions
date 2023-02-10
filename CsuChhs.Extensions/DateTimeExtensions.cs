@@ -1,10 +1,14 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace CsuChhs.Extensions
 {
     public static class DateTimeExtensions
     {
+        /// <summary>
+        /// Returns true if the date time is a weekday (M - F)
+        /// </summary>
+        /// <param name="dateTimeValue"></param>
+        /// <returns></returns>
         public static bool IsWeekday(this DateTime dateTimeValue)
         {
             switch (dateTimeValue.DayOfWeek)
@@ -20,6 +24,11 @@ namespace CsuChhs.Extensions
             }
         }
 
+        /// <summary>
+        /// Returns true if the date time is a Monday
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
         public static bool IsMonday(this DateTime dateTime)
         {
             switch (dateTime.DayOfWeek)

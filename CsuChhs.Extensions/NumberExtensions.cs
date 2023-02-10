@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CsuChhs.Extensions
+﻿namespace CsuChhs.Extensions
 {
     public static class NumberExtensions
     {
