@@ -23,7 +23,17 @@ namespace CsuChhs.Extensions.Tests
             Assert.Equal("12:00 AM", time5.ToTwelveHourTime());
         }
 
+        [Fact]
+        public void TestIsNumeric()
+        {
+            Assert.True("97068207".IsNumeric());
+        }
 
+        [Fact]
+        public void TestIsNumericLarge()
+        {
+            Assert.True("9706820741".IsNumeric());
+        }
 
         [Fact]
         public void TestToUrlExtension()
