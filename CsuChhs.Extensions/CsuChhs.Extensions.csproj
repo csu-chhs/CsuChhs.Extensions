@@ -14,7 +14,4 @@
     <RepositoryUrl>https://github.com/csu-chhs/CsuChhs.Extensions</RepositoryUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-  </ItemGroup>
 </Project>
