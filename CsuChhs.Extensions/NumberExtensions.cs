@@ -18,9 +18,9 @@
                 {
                     return TruncateDecimals((double)num, roundTo);
                 }
-                catch (ArgumentOutOfRangeException ex)
+                catch (ArgumentOutOfRangeException)
                 {
-                    throw ex;
+                    throw;
                 }
             }
 
@@ -81,9 +81,9 @@
             {
                 return (int)num.ToPercent(total);
             } 
-            catch (DivideByZeroException ex)
+            catch (DivideByZeroException)
             {
-                throw ex;
+                throw;
             }
         }
 
