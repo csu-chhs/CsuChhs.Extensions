@@ -169,7 +169,7 @@ namespace CsuChhs.Extensions
         /// </summary>
         /// <param name="value"></param>
         /// <returns>string</returns>
-        public static string ToCsvString(this string value)
+        public static string ToCsvString(this string? value)
         {
             if (!string.IsNullOrEmpty(value))
             {
@@ -178,7 +178,7 @@ namespace CsuChhs.Extensions
                     .Replace("\"", "")
                     .Replace(System.Environment.NewLine, " ");
             }
-            return value;
+            return string.Empty;
         }
 
         /// <summary>
