@@ -66,6 +66,17 @@ namespace CsuChhs.Extensions
         }
         
         /// <summary>
+        /// Convert string into a URL encoded string.  Safe to
+        /// put in URLS
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ToUrlEncodedString(this string value)
+        {
+            return Uri.EscapeDataString(value);
+        }
+        
+        /// <summary>
         /// Converts a possible URL without scheme into
         /// one with an acceptable scheme.
         ///
