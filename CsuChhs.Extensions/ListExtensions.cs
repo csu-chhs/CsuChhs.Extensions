@@ -21,5 +21,25 @@
                 list[n] = value;
             }
         }
+
+        /// <summary>
+        /// Adds the item to the list if it doesn't exist
+        /// or removes if it does. This a short cut to using
+        /// the .Contains(<T>) pattern.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="item"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void AddOrRemove<T>(this IList<T> list, T item)
+        {
+            if (list.Contains(item))
+            {
+                list.Remove(item);
+            }
+            else
+            {
+                list.Add(item);
+            }
+        }
     }
 }
