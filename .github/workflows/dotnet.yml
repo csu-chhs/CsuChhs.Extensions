@@ -8,19 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
       with:
             ref: ${{github.event.pull_request.head.ref}}
             repository: ${{github.event.pull_request.head.repo.full_name}}
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 6.0.100
-    - name: Setup NuGet.exe for use with actions
-      uses: NuGet/setup-nuget@v1.0.5
+        dotnet-version: '8'
       
     - name: Restore
-      run: nuget restore
+      run: dotnet restore
     
     - name: Build with dotnet
       run: dotnet build --no-restore
