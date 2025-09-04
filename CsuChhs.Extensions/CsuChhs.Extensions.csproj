@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>CHHS Application Development Team</Authors>
-    <Version>1.5.4</Version>
+    <Version>1.5.5</Version>
     <PackageProjectUrl>https://github.com/csu-chhs/CsuChhs.Extensions</PackageProjectUrl>
     <Company>College of Health and Human Sciences</Company>
     <PackageId>CsuChhs.Extensions</PackageId>
@@ -17,5 +17,8 @@
   </PropertyGroup>
   <ItemGroup>
       <None Include="../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.8" />
   </ItemGroup>
 </Project>
