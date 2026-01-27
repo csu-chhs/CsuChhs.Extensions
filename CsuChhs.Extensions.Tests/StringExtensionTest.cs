@@ -72,6 +72,12 @@ namespace CsuChhs.Extensions.Tests
         }
 
         [Fact]
+        public void TestFormattedPhoneWithChars()
+        {
+            Assert.Equal("844LMENBRO", "844LMENBRO".ToPhoneNumber());
+        }
+
+        [Fact]
         public void TestFormattedPhoneSevenDigits()
         {
             Assert.Equal("123-4567", "1234567".ToPhoneNumber());

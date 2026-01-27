@@ -132,6 +132,13 @@ namespace CsuChhs.Extensions
                     .Replace(")", "")
                     .Replace("-", "");
 
+                // If after we replace chars, we still do not have 
+                // only numbers, return the value.
+                if(!IsNumeric(value))
+                {
+                    return value;
+                }
+
                 switch (phone.Length)
                 {
                     case 7:
