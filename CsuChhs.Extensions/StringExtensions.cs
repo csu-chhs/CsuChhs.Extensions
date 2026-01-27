@@ -134,9 +134,9 @@ namespace CsuChhs.Extensions
 
                 // If after we replace chars, we still do not have 
                 // only numbers, return the value.
-                if(!IsNumeric(value))
+                if(!IsNumeric(phone))
                 {
-                    return value;
+                    return phone;
                 }
 
                 switch (phone.Length)
