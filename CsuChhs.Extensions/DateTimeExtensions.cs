@@ -129,5 +129,42 @@ namespace CsuChhs.Extensions
         {
             return value.ToString("h:mm tt", new CultureInfo("en-us"));
         }
+        
+        public static string ToPrettyTime(this DateTime dateTime, DateTime? referenceTime = null)
+        {
+            var now = referenceTime ?? DateTime.UtcNow;
+
+            if (dateTime.Kind == DateTimeKind.Unspecified)
+                dateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);
+
+            var ts = now - dateTime;
+            var delta = ts.TotalSeconds;
+
+            // If more than 24 hours (past or future), show normal date
+            if (Math.Abs(delta) >= 86400)
+                return dateTime.ToString("g"); // e.g. 4/2/2026 3:45 PM
+
+            bool isFuture = delta < 0;
+            delta = Math.Abs(delta);
+
+            string suffix = isFuture ? "from now" : "ago";
+
+            if (delta < 5)
+                return "just now";
+
+            if (delta < 60)
+                return $"{(int)delta} seconds {suffix}";
+
+            if (delta < 120)
+                return isFuture ? "in a minute" : "a minute ago";
+
+            if (delta < 3600)
+                return $"{(int)(delta / 60)} minutes {suffix}";
+
+            if (delta < 7200)
+                return isFuture ? "in an hour" : "an hour ago";
+
+            return $"{(int)(delta / 3600)} hours {suffix}";
+        }
     }
 }
