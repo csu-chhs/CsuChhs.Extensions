@@ -26,4 +26,12 @@ public class EnumExtensionsTest
         Assert.Equal("TestValue3", Test.TestValue3.GetDisplayName());
     }
     
+    [Fact]
+    public void TestNullable()
+    {
+        Test? nullableValue = null;
+        
+        Assert.Equal("", nullableValue.GetDisplayName());
+    }
+    
 }
